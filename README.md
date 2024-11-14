@@ -34,6 +34,14 @@ This API provides a backend service for a budget management application, allowin
 
 ## Setup
 
+budget-management-api/
+├── models/                # Mongoose models for User, Budget, etc.
+├── controllers/           # API logic for handling requests
+├── routes/                # Express routes for various endpoints
+├── utils/                 # Utility functions and interfaces
+└── .env                   # Environment variables
+
+
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/oguns45/money_budget_backend/edit/main

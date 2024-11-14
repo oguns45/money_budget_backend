@@ -36,5 +36,5 @@ This API provides a backend service for a budget management application, allowin
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/budget-management-api.git
-   cd budget-management-api
+   git clone https://github.com/oguns45/money_budget_backend/edit/main
+   cd money_budget_backend

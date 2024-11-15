@@ -1,10 +1,6 @@
 import {model, Schema, Types} from 'mongoose'
 import { UserInterface } from '../utils/Interfaces'
 
-
-
-
-
 const userSchema = new Schema<UserInterface>({
     email: {
         type: String,

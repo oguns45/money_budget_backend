@@ -38,3 +38,23 @@ import {model, Schema, Types} from 'mongoose'
     createdAt: Date
 
   }
+
+  interface ICategory {
+    [key: string]: number; // Category name as key, budget amount as value
+  }
+  
+  export interface IMoneyBudgetInterface {
+    user: Types.ObjectId; // Reference to the user
+    income: number; // Total income
+    expenses: number; // Total expenses
+    categories: ICategory; // Category breakdown of budget
+    month: number; // Month for tracking (1-12)
+    year: number; // Year for tracking
+    days?: {
+      day: number;
+      dailyIncome?: number;
+      dailyExpenses: number;
+      categoryExpenses: { [key: string]: number };
+    }[];
+    createdAt: Date;
+    updated: Date;}

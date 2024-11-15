@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import db from './config/db'; 
 import authRoutes from  './routes/auth'
+import moneybudgetRoutes from './routes/moneybudget'
 import protect from './middlewares/authMw';
 
 
@@ -18,7 +19,7 @@ app.use(express.json())
 app.use(cors())
 
 
-
+app.use('/api', moneybudgetRoutes) // auth  routes
 app.use('/api', authRoutes) // auth  routes
 app.use(protect)
 

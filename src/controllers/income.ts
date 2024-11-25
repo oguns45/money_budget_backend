@@ -4,7 +4,7 @@ import { IIncome } from '../utils/Interfaces';
 
 // Add a new income
 export const addIncome = async (req: Request, res: Response): Promise<void> => {
-    const { user, title, amount, category, description, date }: IIncome = req.body;
+    const { user, title, amount, category, description, date } = req.body;
 
     try {
         // Validations
@@ -39,7 +39,9 @@ export const getIncomes = async (req: Request, res: Response): Promise<void> => 
     const { userId } = req.params;
 
     try {
+        
         const incomes = await Income.find({ user: userId }).sort({ createdAt: -1 });
+        console.log(incomes)
 
         if (!incomes || incomes.length === 0) {
             res.status(404).json({ message: 'No incomes found for this user.' });
@@ -69,3 +71,5 @@ export const deleteIncome = async (req: Request, res: Response): Promise<void> =
         res.status(500).json({ message: 'Server Error', error });
     }
 };
+
+

@@ -6,7 +6,7 @@ const router = express.Router()
 
 //router.get('/', )
 router.post('/expenses',  addExpense )
-router.get('/expenses',   getExpense )
+router.get('/expenses/:userId',   getExpense )
 router.delete('/expenses/:id/:userId', deleteExpense )
 
 

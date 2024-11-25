@@ -26,8 +26,8 @@ export const addExpense = async (req: Request, res: Response): Promise<void> => 
             date,
         });
 
-        await expense.save();
-        res.status(200).json({ message: 'Expense Added' });
+        const savedExpense = await expense.save();
+        res.status(200).json({ message: 'Expense Added', savedExpense });
     } catch (error) {
         res.status(500).json({ message: 'Server Error', error });
     }

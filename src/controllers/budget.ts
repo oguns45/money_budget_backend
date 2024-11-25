@@ -3,26 +3,38 @@ import Budget from '../models/Budget';
 import { IBudget } from '../utils/Interfaces';
 
 // Add a new budget
-export const createBudget = async (req: Request, res: Response): Promise<void> => {
-    const { user, month, year, category, totalIncome, totalExpenses, days }= req.body;
+// Add a new income
+export const addBudget = async (req: Request, res: Response): Promise<void> => {
+    const { user, title, amount, category, description, date } = req.body;
 
     try {
-        const newBudget = new Budget({
+        // Validations
+        if (!user || !title || !category || !description || !date) {
+            res.status(400).json({ message: 'All fields are required!' });
+            return;
+        }
+
+        if (amount <= 0 || typeof amount !== 'number') {
+            res.status(400).json({ message: 'Amount must be a positive number!' });
+            return;
+        }
+
+        const budget = new Budget({
             user,
-            month,
-            year,
+            title,
+            amount,
             category,
-            totalIncome,
-            totalExpenses,
-            days,
+            description,
+            date,
         });
 
-        const savedBudget = await newBudget.save();
-        res.status(201).json({ message: 'Budget created successfully', budget: savedBudget });
+        const savedBudget = await budget.save();
+        res.status(201).json({ message: 'Income added successfully!', savedBudget });
     } catch (error) {
-        res.status(500).json({ message: 'Error creating budget', error });
+        res.status(500).json({ message: 'Server Error', error });
     }
 };
+
 
 // Get all budgets for a specific user
 export const getBudgets = async (req: Request, res: Response): Promise<void> => {

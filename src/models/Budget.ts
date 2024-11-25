@@ -8,50 +8,38 @@ const BudgetSchema: Schema<IBudget> = new Schema<IBudget>(
             type: Schema.Types.ObjectId,
             ref: 'User',
             required: true,
-        },
-        month: {
-            type: Number,
-            required: true,
-            min: 1,
-            max: 12, // Ensure valid month numbers
-        },
-        year: {
-            type: Number,
-            required: true,
-        },
-        totalIncome: {
-            type: Number,
-            default: 0,
-        },
-        totalExpenses: {
-            type: Number,
-            default: 0,
-        },
-        categories: {
-            type: Map,
-            of: Number,
-            default: {},
           },
-        days: [
-            {
-                day: {
-                    type: Number,
-                    required: true,
-                },
-                dailyIncome: {
-                    type: Number,
-                    default: 0,
-                },
-                dailyExpenses: {
-                    type: Number,
-                    default: 0,
-                },
-                categoryExpenses: {
-                    type: Map,
-                    of: Number, // Map of category name to expense amount
-                },
-            },
-        ],
+        title: {
+            type: String,
+            required: true,
+            trim: true,
+            maxLength: 50,
+        },
+        amount: {
+            type: Number,
+            required: true,
+            trim: true,
+        },
+        type: {
+            type: String,
+            default: "budget",
+        },
+        date: {
+            type: Date,
+            required: true,
+            trim: true,
+        },
+        category: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        description: {
+            type: String,
+            required: true,
+            maxLength: 20,
+            trim: true,
+        },
     },
     { timestamps: true } // Automatically handle createdAt and updatedAt
 );
